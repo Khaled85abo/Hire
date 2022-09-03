@@ -19,10 +19,22 @@ class DatabaseSeeder extends Seeder
 
         // Create random user;
         // $user = User::factory();
-        $user = User::factory()->create([
+        $developer = User::factory()->create([
             'name' => 'Khaled',
+            'role' => 'developer',
+            'password' => '123456',
             'email' => 'khaled@se.se',
         ]);
+        $company = User::factory()->create([
+            'name' => 'Vaimo',
+            'role' => null,
+            'password' => '123456',
+            'email' => 'vaimo@vaimo.se',
+        ]);
+
+
+
+
         //  \App\Models\User::factory(10)->create();
 
         // \App\Models\User::factory()->create([
@@ -49,7 +61,7 @@ class DatabaseSeeder extends Seeder
         //     'description' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam minima et illo reprehenderit quas possimus voluptas repudiandae cum expedita, eveniet aliquid, quam illum quaerat consequatur! Expedita ab consectetur tenetur delensiti?'
         // ]);
         Listing::factory(6)->create([
-            'user_id' => $user->id
+            'user_id' => $company->id
         ]);
     }
 }

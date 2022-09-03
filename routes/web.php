@@ -24,7 +24,12 @@ Route::get('/listings/create', [ListingController::class, 'create'])->middleware
 // Store Listing Data
 Route::post('/listings', [ListingController::class, 'store'])->middleware('auth');
 
-
+Route::get('testId/{id}', function ($id) {
+    dd($id);
+});
+Route::get('/test/{listing}', function (Listing $listing) {
+    dd($listing);
+});
 // Show Edit Form
 Route::get('/listings/{listing}/edit', [ListingController::class, 'edit'])->middleware('auth');
 
@@ -40,23 +45,26 @@ Route::delete('/listings/{listing}', [ListingController::class, 'destroy'])->mid
 // Show Login
 Route::get('/login', [UserController::class, 'login'])->name('login')->middleware('guest');
 
-Route::post('/users/authenticate', [UserController::class , 'authenticate']);
+Route::post('/users/authenticate', [UserController::class, 'authenticate']);
 
 // Show Register 
-Route::get('/register', [UserController::class , 'create'])->middleware('guest');
+Route::get('/register', [UserController::class, 'create'])->middleware('guest');
 
 // Create User 
 Route::post('/users', [UserController::class, 'store']);
 
 // Logout
-Route::post('/logout', [UserController::class , 'logout'])->middleware('auth');
+Route::post('/logout', [UserController::class, 'logout'])->middleware('auth');
 
 // Manage Listings
-Route::get('/listings/manage', [ListingController::class , 'manage'])->middleware('auth');
+Route::get('/listings/manage', [ListingController::class, 'manage'])->middleware('auth');
 
 
 // Single Listing /should be at the bottom because the {} means a place holder that accepts all the options like create
 Route::get('/listings/{listing}', [ListingController::class, 'show']);
+
+
+
 /* Route::get('/hello', function(){
     return response('<h1>Hello World<h1>', 200)->header('Content-Type', 'text/plain')->header('foo', 'bar');
 });

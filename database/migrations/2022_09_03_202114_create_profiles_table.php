@@ -13,17 +13,19 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('listings', function (Blueprint $table) {
+        Schema::create('profiles', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->string('title');
-            $table->string('logo')->nullable();
+            $table->string('picture')->nullable();
             $table->string('tags');
-            $table->string('company')->nullable();
             $table->string('location');
             $table->string('email');
             $table->string('website');
             $table->longText('description');
+            $table->string('experience_years');
+            $table->string('current_job');
+            $table->string('github')->nullable();
+            $table->string('linkedIn')->nullable();
             $table->timestamps();
         });
     }
@@ -35,6 +37,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('listings');
+        Schema::dropIfExists('profiles');
     }
 };
