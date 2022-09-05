@@ -28,11 +28,10 @@ class ListingController extends Controller
     }
 
     // Show Single Listing
-    // ?? Question the route is '/listings/{listing}' which gives us just an id of the lisitng, so where $listing array
     // that we send to the View comes from.
     public function show(Listing $listing)
     {
-        dd($listing);
+        // dd($listing);
         return View('listings.show', [
             'listing' => $listing
         ]);

@@ -7,6 +7,10 @@
 
     <form method="POST" action="/users">
       @csrf
+       <div class="mb-6">
+         <input type="checkbox" class="border border-gray-200 rounded p-2 mr-3" id="role" name="role" value="{{old('role')}}" />
+         <label for="role" class="inline-block text-lg mb-2"> Are you looking for a job as a developer? </label>
+      </div>
       <div class="mb-6">
         <label for="name" class="inline-block text-lg mb-2"> Name </label>
         <input type="text" class="border border-gray-200 rounded p-2 w-full" name="name" value="{{old('name')}}" />

@@ -27,7 +27,12 @@
 
 <body class="mb-48">
   <nav class="flex justify-between items-center mb-4">
-    <a href="/"><img class="w-24" src="{{asset('images/logo.png')}}" alt="" class="logo" /></a>
+    <ul class="flex">
+      <li>
+        <a href="/"><img class="w-24" src="{{asset('images/jobs-logo.jpeg')}}" alt="" class="logo" /></a>
+      </li>
+      <li>  <a href="/profiles"><img class="w-24" src="{{asset('images/profile-logo.webp')}}" alt="" class="logo" /></a></li>
+    </ul>
     <ul class="flex space-x-6 mr-6 text-lg">
       @auth
       <li>
@@ -35,9 +40,16 @@
           Welcome {{auth()->user()->name}}
         </span>
       </li>
-      <li>
-        <a href="/listings/manage" class="hover:text-laravel"><i class="fa-solid fa-gear"></i> Manage Listings</a>
-      </li>
+      @if (auth()->user()->role == 'developer')
+        <li>
+          <a href="/profiles/manage" class="hover:text-laravel"><i class="fa-solid fa-gear"></i> Manage Profile</a>
+        </li>
+      @endif
+      @if (auth()->user()->role == null)
+        <li>
+          <a href="/listings/manage" class="hover:text-laravel"><i class="fa-solid fa-gear"></i> Manage Listings</a>
+        </li>
+      @endif
       <li>
         <form class="inline" method="POST" action="/logout">
           @csrf
